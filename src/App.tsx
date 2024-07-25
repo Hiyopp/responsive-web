@@ -1,33 +1,31 @@
 import styled, { css } from "styled-components";
-import Logo from "../public/img/logo.svg";
+
 import Cloud from "../public/img/cloud.svg";
-import Pin from "../public/img/pin.svg";
 import TopBackground from "../public/img/image.png";
+import Logo from "../public/img/logo.svg";
+import Pin from "../public/img/pin.svg";
 
 const BackColor = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #F2F4F6;
-`
+  background-color: #f2f4f6;
+`;
 
 const wholeWrapper = css`
   height: 100vh;
   display: flex;
+  gap: 16px 16px;
   flex-direction: column;
 `;
 
 const WholeWrapper = styled.div`
+  ${wholeWrapper};
+  width: 400px;
+
   @media (max-width: 800px) {
-    ${wholeWrapper};
-    position: absolute;
-    left: 5vw;
-    right: 5vw;
-  }
-  @media (min-width: 800px) {
-    ${wholeWrapper}
-    width: 400px;
+    width: 90%;
   }
 `;
 
@@ -36,22 +34,18 @@ const Header = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  position: relative;
 `;
 
-const HeaderLogo = styled.img`
-  position: absolute;
-  left: 0;
+const HeaderRightWrapper = styled.div`
+  display: flex;
+  gap: 0 10px;
 `;
 
-const HeaderCloud = styled.img`
-  position: absolute;
-  right: 12%;
-`;
-
-const HeaderPin = styled.img`
-  position: absolute;
-  right: 0;
+const HeaderLeftWrapper = styled.div`
+  display: flex;
+  &:nth-child(1) {
+    flex-grow: 1;
+  }
 `;
 
 const TopImage = styled.div`
@@ -80,14 +74,6 @@ const MiddleContent = styled.div`
   width: 100%;
   background: white;
   border-radius: 15px;
-`
-
-const MiddleSection = styled.div`
-  height: 342px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const BottomContent = styled.div`
@@ -95,7 +81,7 @@ const BottomContent = styled.div`
   width: 135px;
   background: white;
   border-radius: 15px;
-`
+`;
 
 const BottomScroll = styled.div`
   height: 188px;
@@ -103,14 +89,14 @@ const BottomScroll = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   &::-webkit-scrollbar {
-    height: 10px;  
+    height: 10px;
   }
   &::-webkit-scrollbar-thumb {
     background: gray;
     border-radius: 10px;
   }
   &::-webkit-scrollbar-track {
-    background: #B1B8C0;
+    background: #b1b8c0;
     border-radius: 10px;
   }
 `;
@@ -125,21 +111,22 @@ const BottomSection = styled.div`
 `;
 
 function App() {
-
   return (
     <BackColor>
       <WholeWrapper>
         <Header>
-          <HeaderLogo src={Logo} />
-          <HeaderCloud src={Cloud} />
-          <HeaderPin src={Pin} />
+          <HeaderLeftWrapper>
+            <img src={Logo} />
+          </HeaderLeftWrapper>
+          <HeaderRightWrapper>
+            <img src={Cloud} />
+            <img src={Pin} />
+          </HeaderRightWrapper>
         </Header>
         <TopSection>
           <TopImage>새로운 두부를 만나보세요.</TopImage>
         </TopSection>
-        <MiddleSection>
-          <MiddleContent></MiddleContent>
-        </MiddleSection>
+        <MiddleContent></MiddleContent>
         <BottomScroll>
           <BottomSection>
             <BottomContent></BottomContent>
